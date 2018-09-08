@@ -1,4 +1,4 @@
-FROM blueapple/alpine35_glibc_basicimage
+FROM blueapple/alpine35_glibc_basicimage:base
 MAINTAINER blueapple <blueapple1120@qq.com>
 RUN apk add --no-cache \
     bash \
@@ -14,10 +14,10 @@ RUN apk add --no-cache \
     qt5-qtbase-dev \
     sudo \
     && ln -s /usr/bin/qmake-qt5 /usr/bin/qmake \
-    && adduser -D -h /home/qt qt \
-    && echo 'qt ALL=(ALL) NOPASSWD: ALL' >/etc/sudoers.d/qt
+    && adduser -D -h /home/admin admin \
+    && echo 'admin ALL=(ALL) NOPASSWD: ALL' >/etc/sudoers.d/admin
 
-USER qt
-ENV HOME /home/qt
-WORKDIR /home/qt
+USER admin
+ENV HOME /home/admin
+WORKDIR /home/admin
 CMD ["/bin/bash"]
