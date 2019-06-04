@@ -6,7 +6,6 @@ RUN apk add --no-cache \
     doxygen \
     g++ \
     gcc \
-    git \
     graphviz \
     make \
     musl-dev \
@@ -15,7 +14,8 @@ RUN apk add --no-cache \
     sudo \
     && ln -s /usr/bin/qmake-qt5 /usr/bin/qmake \
     && adduser -D -h /home/admin admin \
-    && echo 'admin ALL=(ALL) NOPASSWD: ALL' >/etc/sudoers.d/admin
+    && echo 'admin ALL=(ALL) NOPASSWD: ALL' >/etc/sudoers.d/admin \
+    && apk del git
 
 USER admin
 ENV HOME /home/admin
